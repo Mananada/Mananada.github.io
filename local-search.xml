@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>demo</title>
-    <link href="/posts/37731.html"/>
-    <url>/posts/37731.html</url>
+    <title>mayDay</title>
+    <link href="/posts/19972.html"/>
+    <url>/posts/19972.html</url>
     
-    <content type="html"><![CDATA[<p>bibibi<br>测试<br>demo</p><p><img src="/posts/37731/a.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<p>不要改文件<br>文件名<br>好</p><p>#文件名是标题<br>ctrl + k v<br>先摁着ctrl 点k这俩摁完松手点v试试<br>松手再点vvv<br><strong>haole</strong>这个你再自个学去<br>啥乱七八糟的快捷键</p><p>每次打开都要hexo cl<br>改完以后hexo s本地测试看有没有问题<br>确认没问题<br>hexo d<br>推送到云端（github）</p>]]></content>
     
     
     
