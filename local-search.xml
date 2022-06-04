@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>mayDay</title>
-    <link href="/posts/19972.html"/>
-    <url>/posts/19972.html</url>
+    <title>ES6新特性</title>
+    <link href="/posts/42519.html"/>
+    <url>/posts/42519.html</url>
     
-    <content type="html"><![CDATA[<p>不要改文件<br>文件名<br>好</p><p>#文件名是标题<br>ctrl + k v<br>先摁着ctrl 点k这俩摁完松手点v试试<br>松手再点vvv<br><strong>haole</strong>这个你再自个学去<br>啥乱七八糟的快捷键</p><p>每次打开都要hexo cl<br>改完以后hexo s本地测试看有没有问题<br>确认没问题<br>hexo d<br>推送到云端（github）</p>]]></content>
+    <content type="html"><![CDATA[<p>参考地址：<a href="https://es6.ruanyifeng.com/">https://es6.ruanyifeng.com/</a></p><h2 id="1-let和const关键字"><a href="#1-let和const关键字" class="headerlink" title="1. let和const关键字"></a>1. let和const关键字</h2><h3 id="1-1-let关键字用于声明变量"><a href="#1-1-let关键字用于声明变量" class="headerlink" title="1.1 let关键字用于声明变量"></a>1.1 let关键字用于声明变量</h3><ul><li>变量不能重复声明<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ceylon"><span class="hljs-keyword">let</span> a<br><span class="hljs-keyword">let</span> a = <span class="hljs-number">12</span>  <span class="hljs-comment">// a已经声明，此处为错误用法！</span><br></code></pre></td></tr></table></figure></li><li>块级作用域：if else while for<br>声明的变量只在 let 命令所在的代码块内有效<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs arcade">&#123;<br>    let fruit=<span class="hljs-string">&#x27;apple&#x27;</span><br>&#125;<br><span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(fruit) <span class="hljs-comment">//error</span><br><br><span class="hljs-comment">// 在if()中同理</span><br></code></pre></td></tr></table></figure></li><li>不存在变量提升：不允许变量声明前使用</li><li>不影响作用域链</li></ul><p>const 声明一个只读的常量，一旦声明，常量的值就不能改变<br><img src="/posts/42519/1.jpg" alt="let"></p><p><img src="/posts/42519/4.jpg" alt="let"></p><p><img src="/posts/42519/2022-06-04-22-02-42.png"></p>]]></content>
     
     
     
@@ -17,11 +17,11 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/posts/16107.html"/>
-    <url>/posts/16107.html</url>
+    <title>mayDay</title>
+    <link href="/posts/19972.html"/>
+    <url>/posts/19972.html</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>不要改文件<br>文件名<br>好</p><p>#文件名是标题<br>ctrl + k v<br>先摁着ctrl 点k这俩摁完松手点v试试<br>松手再点vvv<br><strong>haole</strong>这个你再自个学去</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">这样也可以，<br>这种是最标准的<br></code></pre></td></tr></table></figure><p>代码块</p><p>每次打开都要hexo cl<br>改完以后hexo s本地测试看有没有问题<br>确认没问题<br>hexo g<br>hexo d<br>推送到云端（github）</p>]]></content>
     
     
     
