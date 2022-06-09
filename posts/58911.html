@@ -1,0 +1,934 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="May">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Angular：基于 TypeScript 的 Javascript 框架1. Angular Cli脚手架1.1创建工程 若之前安装cli失败过，先执行A，B两句命令 123　A：npm uninstall -g angular-cli  　B：npm cache verify  因为angular-cli是用typescript写的 1npm install -g typescript typ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular">
+<meta property="og:url" content="https://mananada.github.io/posts/58911.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Angular：基于 TypeScript 的 Javascript 框架1. Angular Cli脚手架1.1创建工程 若之前安装cli失败过，先执行A，B两句命令 123　A：npm uninstall -g angular-cli  　B：npm cache verify  因为angular-cli是用typescript写的 1npm install -g typescript typ">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-22-56-29.png">
+<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-22-57-34.png">
+<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-22-58-34.png">
+<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-22-59-42.png">
+<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-23-00-24.png">
+<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-23-00-58.png">
+<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-23-01-51.png">
+<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-23-02-25.png">
+<meta property="article:published_time" content="2022-06-09T14:54:24.000Z">
+<meta property="article:modified_time" content="2022-06-09T15:05:05.094Z">
+<meta property="article:author" content="May">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="框架">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mananada.github.io/posts/58911/2022-06-09-22-56-29.png">
+  
+  
+  
+  <title>Angular - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mananada.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":"ture","follow_dnt":"flase","baidu":null,"google":"UA-228159226-1","gtag":"G-LZVV8KDT7J","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"24InPVKrS4smSJoQFQeKzb7p-MdYXbMMI","app_key":"Mm6VaYRpWsap52X1fdGRbEo8","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>May</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Angular"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-09 22:54" pubdate>
+          2022年6月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          62 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Angular</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：1 小时前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Angular：基于-TypeScript-的-Javascript-框架"><a href="#Angular：基于-TypeScript-的-Javascript-框架" class="headerlink" title="Angular：基于 TypeScript 的 Javascript 框架"></a>Angular：基于 TypeScript 的 Javascript 框架</h1><h2 id="1-Angular-Cli脚手架"><a href="#1-Angular-Cli脚手架" class="headerlink" title="1. Angular Cli脚手架"></a><strong>1. Angular Cli脚手架</strong></h2><p><strong>1.1创建工程</strong></p>
+<p>若之前安装cli失败过，先执行A，B两句命令</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">　A：<span class="hljs-built_in">npm</span> uninstall -g angular-cli <br> <br>　B：<span class="hljs-built_in">npm</span> cache verify<br></code></pre></td></tr></table></figure>
+
+<p>因为angular-cli是用typescript写的</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> -g typescript typings<br></code></pre></td></tr></table></figure>
+
+<p>然后全局安装 Angular CLI</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> install -g @angular/cli<br></code></pre></td></tr></table></figure>
+
+<p>检测是否安装成功</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">ng <span class="hljs-built_in">version</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/posts/58911/2022-06-09-22-56-29.png" srcset="/img/loading.gif" lazyload></p>
+<p>打开vscode终端 创建工程</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">ng <span class="hljs-keyword">new</span> <span class="hljs-type">my</span>-demo <span class="hljs-comment">//my-demo为项目名称</span><br></code></pre></td></tr></table></figure>
+
+<p>启动angular项目</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">cd <span class="hljs-keyword">my</span>-demo<br>ng serve <span class="hljs-comment">--open</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>1.2 目录结构</strong></p>
+<p><img src="/posts/58911/2022-06-09-22-57-34.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-理解Angular"><a href="#2-理解Angular" class="headerlink" title="2. 理解Angular"></a>2. 理解Angular</h2><h3 id="2-1-Components组件"><a href="#2-1-Components组件" class="headerlink" title="2.1 Components组件"></a>2.1 Components组件</h3><h4 id="创建组件"><a href="#创建组件" class="headerlink" title="创建组件"></a><strong>创建组件</strong></h4><ol>
+<li><strong>Angular CLI 创建一个组件</strong></li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript">ng generate component heroes <span class="hljs-comment">//heroes组件名称</span><br>ng g c heros <span class="hljs-comment">//简写版</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/posts/58911/2022-06-09-22-58-34.png" srcset="/img/loading.gif" lazyload></p>
+<p>在app.module.ts的declarations中注入组件</p>
+<ol>
+<li><p><strong>手动创建组件</strong></p>
+<p>在src-&gt;app下创建一个新文件：组件名.component.ts</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 顶部添加import语句</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Component</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;<br><br><span class="hljs-comment">//添加组件装饰器</span><br><span class="hljs-meta">@Component</span>(&#123;<br>  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;app-demo&#x27;</span>, <span class="hljs-comment">// 选择器实例化组件，在根组件的html，将组件挂上去</span><br>  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./app-demo.component.html&#x27;</span>, <span class="hljs-comment">//引入组件显示信息的HTML模板</span><br>  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./app-demo.component.css&#x27;</span>] <span class="hljs-comment">//引入组件CSS样式</span><br><br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComponentOverviewComponent</span> &#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>@Component最常用的几个选项:</p>
+<p><strong>selector</strong>：这个 CSS 选择器用于在模板中标记出该指令，并触发该指令的实例化。</p>
+<p><strong>template</strong>：组件的内联模板</p>
+<p><strong>templateUrl</strong>：组件模板文件的 URL</p>
+<p><strong>styleUrls</strong>：组件样式文件</p>
+<p><strong>styles</strong>：组件内联样式</p>
+</li>
+</ol>
+<h4 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a><strong>组件生命周期</strong></h4><ol>
+<li>ngOnChanges</li>
+<li>ngOnInit</li>
+<li>ngDoCheck</li>
+<li>ngAfterContentInit</li>
+<li>ngAfterContentChecked</li>
+<li>ngAfterViewInit</li>
+<li>ngAfterViewChecked</li>
+<li>ngOnDestory：</li>
+</ol>
+<h3 id="2-2-Templates模板-HTML"><a href="#2-2-Templates模板-HTML" class="headerlink" title="2.2 Templates模板 - HTML"></a>2.2 Templates模板 - HTML</h3><p>相比较Vue写在data中的数据。angular直接将数据定义在组件所在的class类中</p>
+<h4 id="文本插值"><a href="#文本插值" class="headerlink" title="文本插值"></a>文本插值</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;h3&gt; <span class="hljs-title class_">Current</span> <span class="hljs-attr">customer</span>: &#123;&#123; currentCustomer &#125;&#125;&lt;/h3&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="属性绑定：设置特定的元素属性"><a href="#属性绑定：设置特定的元素属性" class="headerlink" title="属性绑定：设置特定的元素属性"></a>属性绑定：设置特定的元素属性</h4><p><strong>Attribute绑定</strong></p>
+<p>相比较Vue中的“:”(v-bind)绑定属性，angular中使用” <strong>[ ]</strong> “来绑定属性。</p>
+<p>① 属性名（字符串形式）</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;div [id]=<span class="hljs-string">&quot;&#x27;box&#x27;&quot;</span>&gt;绑定字符串&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<p>② 变量形式</p>
+<p>在组件TS中声明变量</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;div [id]=<span class="hljs-string">&quot;box&quot;</span>&gt;绑定变量名&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<p>html文件中属性绑定</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-attr">box</span>:<span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;app-box&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>class类绑定</strong></p>
+<p>① 单一类绑定</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;h3 [<span class="hljs-keyword">class</span>.<span class="hljs-property">h3</span>-dom]=<span class="hljs-string">&quot;true&quot;</span>&gt;单一类绑定&lt;/h3&gt;<br></code></pre></td></tr></table></figure>
+
+<p>② 多重类绑定</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;h3 [<span class="hljs-keyword">class</span>]=<span class="hljs-string">&quot;&#x27;h3-dom font-w string&#x27;&quot;</span>&gt;多重类绑定&lt;/h3&gt;<br></code></pre></td></tr></table></figure>
+
+<p>③ class条件渲染</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;h3 [<span class="hljs-keyword">class</span>]=<span class="hljs-string">&quot;&#123;&#x27;h3-dom&#x27;:false,&#x27;title-dom&#x27;:true&#125;&quot;</span>&gt;<span class="hljs-keyword">class</span>条件渲染&lt;/h3&gt;<br></code></pre></td></tr></table></figure>
+
+<p>④ class数组渲染</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;h3 [<span class="hljs-keyword">class</span>]=<span class="hljs-string">&quot;[&#x27;h3-dom&#x27;,&#x27;title-dom&#x27;]&quot;</span>&gt;<span class="hljs-keyword">class</span>数组渲染&lt;/h3&gt;<br></code></pre></td></tr></table></figure>
+
+<p><strong>style样式绑定</strong></p>
+<p>① 单一样式绑定</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;h3 [style.<span class="hljs-property">width</span>]=<span class="hljs-string">&quot;&#x27;300px&#x27;&quot;</span>&gt;单一样式绑定&lt;/h3&gt;<br></code></pre></td></tr></table></figure>
+
+<p>② 多样式绑定</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;h3 [style]=<span class="hljs-string">&quot;&#x27;width:300px;color:blue&#x27;&quot;</span>&gt;多样式绑定&lt;/h3&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span> [<span class="hljs-attr">style</span>]=<span class="hljs-string">&quot;&#123;&#x27;width&#x27;:&#x27;300px&#x27;,&#x27;color&#x27;:&#x27;blue&#x27;&#125;&quot;</span>&gt;</span>多样式绑定<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h4><p>相比较Vue使用v-if，v-show；angular使用*ngIf</p>
+<p> *<strong>ngIf</strong>是直接影响元素是否被渲染，而非控制元素的显示和隐藏</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;div *ngIf=<span class="hljs-string">&quot;isMax&quot;</span>&gt;isMax==<span class="hljs-literal">true</span>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h4><p>相比较Vue使用v-for；angular使用*<strong>ngFor</strong></p>
+<p>在组件TS中声明变量</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-attr">colors</span>:<span class="hljs-title class_">Array</span>&lt;<span class="hljs-built_in">string</span>&gt; = [ <span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>, <span class="hljs-string">&#x27;yellow&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span> ];<br></code></pre></td></tr></table></figure>
+
+<p>html文件中循环</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;div *ngFor=<span class="hljs-string">&quot;let color of colors let i=index let odd=odd&quot;</span>&gt;<br>  &#123;&#123;odd&#125;&#125;<br>  &#123;&#123;i&#125;&#125;<br>  &#123;&#123;color&#125;&#125;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="/posts/58911/2022-06-09-22-59-42.png" srcset="/img/loading.gif" lazyload></p>
+<p>Vue中只能通过v-if，else-if来侧面实现；但angular实现了一般计算机语言的switch-case语法：*<strong>ngSwitch</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br>    status = <span class="hljs-number">1</span>;<br>&#125;<br><br>  &lt;ul [ngSwitch]=<span class="hljs-string">&quot;status&quot;</span>&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>已支付<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>订单已经确认<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span> <br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>已发货<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngSwitchDefault</span>&gt;</span>无效<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>  &lt;/ul&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="事件绑定：侦听元素更改事件"><a href="#事件绑定：侦听元素更改事件" class="headerlink" title="事件绑定：侦听元素更改事件"></a>事件绑定：侦听元素更改事件</h4><p><strong>① 绑定到事件</strong></p>
+<p>相对于Vue使用@来绑定事件，angular中使用 <strong>(事件类型)&#x3D;”执行函数”</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br>  <span class="hljs-title function_">clickFunc</span>(<span class="hljs-params">e:Event</span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>)<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;你点击了按钮！&quot;</span>)<br>  &#125;<br>&#125;<br><br>&lt;button (click)=<span class="hljs-string">&quot;clickFunc($event)&quot;</span>&gt;点击&lt;<span class="hljs-regexp">/button&gt; /</span><span class="hljs-regexp">/$event表示当前事件对象</span><br></code></pre></td></tr></table></figure>
+
+<p>**模板引用变量  #**（响应输入）</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br> <span class="hljs-title function_">getUserName</span>(<span class="hljs-params">value:<span class="hljs-built_in">string</span></span>)&#123;  <span class="hljs-comment">//传入value，类型为string</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value)<br>  &#125;<br>&#125;<br><br>&lt;input #userName <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;text&quot;</span> (input)=<span class="hljs-string">&quot;inputChange($event)&quot;</span>&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;getUserName(userName.value)&quot;</span>&gt;</span>获取userName<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="数据双向绑定：属性绑定与事件绑定结合"><a href="#数据双向绑定：属性绑定与事件绑定结合" class="headerlink" title="数据双向绑定：属性绑定与事件绑定结合"></a>数据双向绑定：属性绑定与事件绑定结合</h4><p>相对于Vue中的v-model。angular则是把属性绑定和事件绑定结合起来用</p>
+<p>**[(ngModel)]**只对表单元素有效（input、select、textarea）,使用之前需要导入<code>FormsModule</code>板块</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">FormsModule</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;<br><br><span class="hljs-meta">@NgModule</span>(&#123;<br>  <span class="hljs-comment">// 申明组件内用到的视图</span><br>  <span class="hljs-attr">declarations</span>: [<br>    <span class="hljs-title class_">AppComponent</span>,<br>    <span class="hljs-title class_">HelloComponent</span>,<br>  ],<br>  <span class="hljs-comment">//引入模块需要的类</span><br>  <span class="hljs-attr">imports</span>: [<br>    <span class="hljs-title class_">BrowserModule</span>,<br>    <span class="hljs-title class_">AppRoutingModule</span>,<br>    <span class="hljs-title class_">FormsModule</span><br>  ],<br>  <span class="hljs-comment">//全局服务</span><br>  <span class="hljs-attr">providers</span>: [],<br>  <span class="hljs-comment">//根组件</span><br>  <span class="hljs-attr">bootstrap</span>: [<span class="hljs-title class_">AppComponent</span>]<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br>  <span class="hljs-attr">title</span>:<span class="hljs-built_in">string</span>=<span class="hljs-string">&#x27;&#x27;</span><br>&#125;<br>&lt;input [(ngModel)]=<span class="hljs-string">&quot;title&quot;</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>title:&#123;&#123;title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id><a href="#" class="headerlink" title></a></h4><h3 id="2-3-Directives指令"><a href="#2-3-Directives指令" class="headerlink" title="2.3 Directives指令"></a>2.3 Directives指令</h3><h3 id="2-4-Dependency-Injection依赖注入"><a href="#2-4-Dependency-Injection依赖注入" class="headerlink" title="2.4 Dependency Injection依赖注入"></a>2.4 Dependency Injection依赖注入</h3><h2 id="3-开发指南"><a href="#3-开发指南" class="headerlink" title="3. 开发指南"></a>3. 开发指南</h2><h3 id="3-1-routing路由和navigation导航"><a href="#3-1-routing路由和navigation导航" class="headerlink" title="3.1 routing路由和navigation导航"></a>3.1 routing路由和navigation导航</h3><h3 id="3-2-forms表单"><a href="#3-2-forms表单" class="headerlink" title="3.2 forms表单"></a>3.2 forms表单</h3><h4 id="表单-API-汇总"><a href="#表单-API-汇总" class="headerlink" title="表单 API 汇总"></a>表单 API 汇总</h4><p>基础类</p>
+<ul>
+<li><code>FormControl</code> 实例用于追踪<strong>单个表单控件</strong>的值和验证状态。</li>
+<li><code>FormGroup</code> 用于追踪一个<strong>表单控件组</strong>的值和状态。</li>
+<li><code>FormArray</code> 用于追踪<strong>表单控件数组</strong>的值和状态。</li>
+<li><code>FormBuilder</code>  一个可注入的服务，提供一些用于提供创建<strong>控件实例</strong>的工厂方法</li>
+</ul>
+<p>基础指令</p>
+<ul>
+<li><p>FormControlDirective  把一个独立的 FormControl 实例绑定到表单控件元素。</p>
+</li>
+<li><p>FormControlName  把一个现有 FormGroup 中的 FormControl 实例根据名字绑定到表单控件元素。</p>
+</li>
+<li><p>FormGroupDirective  把一个现有的 FormGroup 实例绑定到 DOM 元素。</p>
+</li>
+<li><p>FormGroupName  把一个内嵌的 FormGroup 实例绑定到一个 DOM 元素。</p>
+</li>
+<li><p>FormArrayName  把一个内嵌的 FormArray 实例绑定到一个 DOM 元素。</p>
+</li>
+</ul>
+<h4 id="响应式表单"><a href="#响应式表单" class="headerlink" title="响应式表单"></a><strong>响应式表单</strong></h4><h5 id="表单控件"><a href="#表单控件" class="headerlink" title="表单控件"></a><strong>表单控件</strong></h5><p>① 注册响应式表单</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">ReactiveFormsModule</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;<br><br><span class="hljs-meta">@NgModule</span>(&#123;<br>  <span class="hljs-attr">imports</span>: [<br>    <span class="hljs-comment">// other imports ...</span><br>    <span class="hljs-title class_">ReactiveFormsModule</span><br>  ],<br>&#125;)<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppModule</span> &#123; &#125;<br></code></pre></td></tr></table></figure>
+
+<p>② 注册表单控件：<strong>FormControl</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Component</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">FormControl</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NameEditorComponent</span> &#123;<br>	<span class="hljs-attr">age</span>:<span class="hljs-title class_">FormControl</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>);<br>&#125;<br><span class="hljs-comment">//使用这种模板绑定语法，把该表单控件注册给了模板中名为 age 的输入元素。这样，表单控件和 DOM 元素就可以互相通讯了：视图会反映模型的变化，模型也会反映视图中的变化</span><br><br>年龄：&lt;input <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;text&quot;</span> [formControl]=<span class="hljs-string">&quot;age&quot;</span>&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>age:&#123;&#123;age.value&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>③ 修改值</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NameEditorComponent</span> &#123;<br>  <span class="hljs-title function_">ageChangeFunc</span>(<span class="hljs-params"></span>)&#123;<br>  	<span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span>.<span class="hljs-title function_">setValue</span>(<span class="hljs-number">18</span>)<br>  &#125;<br>&#125;<br><br>年龄：&lt;input type=<span class="hljs-string">&quot;text&quot;</span> [formControl]=<span class="hljs-string">&quot;age&quot;</span>&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>age:&#123;&#123;age.value&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;ageChangeFunc()&quot;</span>&gt;</span>长大<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="/posts/58911/2022-06-09-23-00-24.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="表单控件分组"><a href="#表单控件分组" class="headerlink" title="表单控件分组"></a><strong>表单控件分组</strong></h5><p>引入控件，创建一个 <strong>FormGroup</strong> 实例</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Component</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">FormControl</span>,<span class="hljs-title class_">FormGroup</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NameEditorComponent</span> &#123;<br>	loginForm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>(&#123;<br>    	<span class="hljs-attr">userName</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>    	<span class="hljs-attr">password</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>  	&#125;);<br>&#125;<br><br>&lt;form [formGroup]=<span class="hljs-string">&quot;loginForm&quot;</span>&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">    账号:</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;userName&quot;</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">    密码:</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;subFormFunc()&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="/posts/58911/2022-06-09-23-00-58.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h5><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br>    fromData=&#123;<br>       <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;&#x27;</span>,<br>       <span class="hljs-attr">password</span>:<span class="hljs-string">&#x27;&#x27;</span><br>    &#125;;<br><br>    <span class="hljs-title function_">subBtnFUn</span>(<span class="hljs-params">obj</span>)&#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj)<br>    &#125;<br>&#125;<br><br>&lt;form  action=<span class="hljs-string">&quot;&quot;</span>&gt;<br>  账号：&lt;input required #nameInp=<span class="hljs-string">&quot;ngModel&quot;</span> type=<span class="hljs-string">&quot;text&quot;</span> [(ngModel)]=<span class="hljs-string">&quot;fromData.name&quot;</span> name=<span class="hljs-string">&quot;userName&quot;</span>&gt;<br>  &lt;br&gt;<br>  &lt;!-- 验证是否通过 --&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>验证结果：&#123;&#123;nameInp.valid &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!nameInp.valid&quot;</span>&gt;</span>请输入账号<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  密码：&lt;input required  #pasInp=<span class="hljs-string">&quot;ngModel&quot;</span> type=<span class="hljs-string">&quot;text&quot;</span> [(ngModel)]=<span class="hljs-string">&quot;fromData.password&quot;</span> name=<span class="hljs-string">&quot;password&quot;</span>&gt;<br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>验证结果：&#123;&#123;pasInp.valid &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;subBtnFUn(nameInp)&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>&lt;/form&gt;<br></code></pre></td></tr></table></figure>
+
+<p>我们还可以通过 <strong>ngModel</strong> 跟踪修改状态与有效性验证，它使用了三个 CSS 类来更新控件，以便反映当前状态。</p>
+<table>
+<thead>
+<tr>
+<th align="left">状态</th>
+<th align="left">为 true 时的类</th>
+<th align="left">为 false 时的类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">控件已经被访问过</td>
+<td align="left"><code>ng-touched</code></td>
+<td align="left"><code>ng-untouched</code></td>
+</tr>
+<tr>
+<td align="left">控件值已经变化</td>
+<td align="left"><code>ng-dirty</code></td>
+<td align="left"><code>ng-pristine</code></td>
+</tr>
+<tr>
+<td align="left">控件值是有效的</td>
+<td align="left"><code>ng-valid</code></td>
+<td align="left"><code>ng-invalid</code></td>
+</tr>
+</tbody></table>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jsx">.<span class="hljs-property">ng</span>-invalid&#123;<br>  border-<span class="hljs-attr">color</span>: red;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="/posts/58911/2022-06-09-23-01-51.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="自定义表单验证"><a href="#自定义表单验证" class="headerlink" title="自定义表单验证"></a>自定义表单验证</h5><p><strong>验证器（Validator）函数</strong></p>
+<ul>
+<li><p>内置验证器函数</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>,<br><span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">maxLength</span>(<span class="hljs-number">18</span>)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="模板驱动表单"><a href="#模板驱动表单" class="headerlink" title="模板驱动表单"></a>模板驱动表单</h4><p><strong>区别</strong>：响应式表单和模板驱动表单之间的一些关键差异</p>
+<p><img src="/posts/58911/2022-06-09-23-02-25.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-HTTP客户端"><a href="#3-3-HTTP客户端" class="headerlink" title="3.3 HTTP客户端"></a>3.3 HTTP客户端</h3><h3 id="3-4-Animations动画"><a href="#3-4-Animations动画" class="headerlink" title="3.4 Animations动画"></a>3.4 Animations动画</h3><h2 id="4-Tutorials"><a href="#4-Tutorials" class="headerlink" title="4. Tutorials"></a>4. Tutorials</h2><h2 id="-1"><a href="#-1" class="headerlink" title></a></h2>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+        <a href="/tags/%E6%A1%86%E6%9E%B6/">#框架</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Angular</div>
+      <div>https://mananada.github.io/posts/58911.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>May</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月9日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/29139.html" title="机器学习">
+                        <span class="hidden-mobile">机器学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-228159226-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+    <!-- Google gtag.js -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.googletagmanager.com/gtag/js?id=G-LZVV8KDT7J', function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LZVV8KDT7J');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
