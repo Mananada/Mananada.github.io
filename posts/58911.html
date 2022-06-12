@@ -28,11 +28,10 @@
 <meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-22-58-34.png">
 <meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-22-59-42.png">
 <meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-23-00-24.png">
-<meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-23-00-58.png">
 <meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-23-01-51.png">
 <meta property="og:image" content="https://mananada.github.io/posts/58911/2022-06-09-23-02-25.png">
 <meta property="article:published_time" content="2022-06-09T14:54:24.000Z">
-<meta property="article:modified_time" content="2022-06-09T15:05:05.094Z">
+<meta property="article:modified_time" content="2022-06-11T16:04:53.596Z">
 <meta property="article:author" content="May">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="框架">
@@ -239,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.4k 字
+          11k 字
         
       </span>
     
@@ -250,7 +249,7 @@
         
         
         
-          62 分钟
+          91 分钟
         
       </span>
     
@@ -293,7 +292,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 小时前
+                    本文最后更新于：12 小时前
                   
                 
               </p>
@@ -343,16 +342,38 @@
 </li>
 </ol>
 <h4 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a><strong>组件生命周期</strong></h4><ol>
-<li>ngOnChanges</li>
-<li>ngOnInit</li>
-<li>ngDoCheck</li>
-<li>ngAfterContentInit</li>
-<li>ngAfterContentChecked</li>
-<li>ngAfterViewInit</li>
-<li>ngAfterViewChecked</li>
-<li>ngOnDestory：</li>
+<li><strong>ngOnChanges</strong>：<font color="orange">组件数据更新</font></li>
+<li><strong>ngOnInit</strong>：<font color="orange">初始化组件，只被调用一次</font></li>
+<li>ngDoCheck：检测数据变化</li>
+<li>ngAfterContentInit：内容初始化后，只被调用一次</li>
+<li>ngAfterContentChecked：检测内容变化</li>
+<li>ngAfterViewInit：视图初始化后，只被调用一次</li>
+<li>ngAfterViewChecked：检测视图变化</li>
+<li><strong>ngOnDestory</strong>：<font color="orange">组件销毁</font></li>
 </ol>
-<h3 id="2-2-Templates模板-HTML"><a href="#2-2-Templates模板-HTML" class="headerlink" title="2.2 Templates模板 - HTML"></a>2.2 Templates模板 - HTML</h3><p>相比较Vue写在data中的数据。angular直接将数据定义在组件所在的class类中</p>
+<h4 id="组件交互"><a href="#组件交互" class="headerlink" title="组件交互"></a>组件交互</h4><p><strong>组件挂载</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//在home组件中嵌入title组件selector属性</span><br>&lt;app-title&gt;&lt;/app-title&gt;<br></code></pre></td></tr></table></figure>
+
+<p><strong>父传子@Input</strong></p>
+<p>Vue父组件直接在子组件上绑定数据，在子组件中用props来接收</p>
+<p>Angular父组件在子组件上绑定属性，子组件使用input来接收（input需要导入）</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//父组件:home.component.html</span><br>&lt;app-title [title] = <span class="hljs-string">&quot;title&quot;</span>&gt;&lt;/app-title&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;titleChange()&quot;</span>&gt;</span>变身<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="hljs-comment">//home.component.ts</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HomeComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> &#123; <br>  <span class="hljs-attr">title</span>:<span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;may呀&quot;</span><br><br>  <span class="hljs-title function_">titleChange</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">title</span> = <span class="hljs-string">&#x27;哇哈哈&#x27;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//子组件：title.component.html</span><br>&lt;p&gt;&#123;&#123;title&#125;&#125; works!&lt;/p&gt;<br><span class="hljs-comment">//title.component.ts</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Input</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;      <span class="hljs-comment">//① 导入input</span><br><span class="hljs-meta">@Input</span>()<br>  title?:<span class="hljs-built_in">string</span>  <span class="hljs-comment">//组件接收title属性                    //② 属性名与父组件绑定一致</span><br><br>  <span class="hljs-title function_">ngOnChanges</span>(): <span class="hljs-built_in">void</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">title</span>)                            <span class="hljs-comment">//③ 使用</span><br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>子传父数据@Output</strong></p>
+<p>类似于Vue在子组件中触发$emit事件，然后在父组件中监听</p>
+<p>angular中父组件给子组件传递一个事件，子组件通过<code>@Output</code>弹射触发事件</p>
+<ol>
+<li>在子组件中导入output和EventEmitter</li>
+<li>子组件使用output装饰器装饰EventEmitter的实例</li>
+<li>子组件通过EventEmitter实例emmit数据，父组件监听实例获取数据</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//子组件:title.component.html</span><br>&lt;button (click)=<span class="hljs-string">&quot;addBtnFunc()&quot;</span>&gt;我要学<span class="hljs-title class_">Vue</span>&lt;/button&gt;<br><span class="hljs-comment">//title.component.ts</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Onput</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;      <br>  <span class="hljs-meta">@Output</span>()<br>  addList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">EventEmitter</span>()   <span class="hljs-comment">//弹射事件</span><br><br>  <span class="hljs-title function_">addBtnFunc</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">addList</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;Vue&#x27;</span>)<br>  &#125;<br><br><br><span class="hljs-comment">//父组件：home.component.html</span><br>&lt;app-title (addList)=<span class="hljs-string">&quot;addListenFunc($event)&quot;</span> [title] = <span class="hljs-string">&quot;title&quot;</span>&gt;&lt;/app-title&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of list&quot;</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>       <span class="hljs-comment">//遍历显示list</span><br><span class="hljs-comment">//home.component.ts</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HomeComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> &#123; <br>  <span class="hljs-attr">list</span>:<span class="hljs-title class_">Array</span>&lt;<span class="hljs-built_in">string</span>&gt; = [<span class="hljs-string">&#x27;angualr&#x27;</span>,<span class="hljs-string">&#x27;react&#x27;</span>]<br><br>  <span class="hljs-title function_">addListenFunc</span>(<span class="hljs-params">str:<span class="hljs-built_in">string</span></span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>?.<span class="hljs-title function_">push</span>(str)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>子传父@ViewChild()</strong></p>
+<p>通过<code>ViewChild</code>获取子组件实例，获取子组件数据</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//子组件:title.component.html</span><br><br><span class="hljs-comment">//title.component.ts</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Onput</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;      <br>  <span class="hljs-title function_">addBtnFunc</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">addList</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;Vue&#x27;</span>)<br>  &#125;<br><br><br><span class="hljs-comment">//父组件：home.component.html</span><br>&lt;app-title #titleDom (addList)=<span class="hljs-string">&quot;addListenFunc($event)&quot;</span> [title] = <span class="hljs-string">&quot;title&quot;</span>&gt;&lt;/app-title&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of list&quot;</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;addFunc()&quot;</span>&gt;</span>调用子组件<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="hljs-comment">//home.component.ts</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HomeComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> &#123; <br>  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;titleDom&#x27;</span>)         <span class="hljs-comment">//与#titleDom保持一致</span><br>  <span class="hljs-attr">child</span>:<span class="hljs-built_in">any</span>;<br><br>  <span class="hljs-title function_">addFunc</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">child</span>.<span class="hljs-title function_">addBtnFunc</span>()<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-模板-HTML"><a href="#2-2-模板-HTML" class="headerlink" title="2.2 模板 - HTML"></a>2.2 模板 - HTML</h3><p>相比较Vue写在data中的数据。angular直接将数据定义在组件所在的class类中</p>
 <h4 id="文本插值"><a href="#文本插值" class="headerlink" title="文本插值"></a>文本插值</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;h3&gt; <span class="hljs-title class_">Current</span> <span class="hljs-attr">customer</span>: &#123;&#123; currentCustomer &#125;&#125;&lt;/h3&gt;<br></code></pre></td></tr></table></figure>
 
 <h4 id="属性绑定：设置特定的元素属性"><a href="#属性绑定：设置特定的元素属性" class="headerlink" title="属性绑定：设置特定的元素属性"></a>属性绑定：设置特定的元素属性</h4><p><strong>Attribute绑定</strong></p>
@@ -416,7 +437,52 @@
 
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br>  <span class="hljs-attr">title</span>:<span class="hljs-built_in">string</span>=<span class="hljs-string">&#x27;&#x27;</span><br>&#125;<br>&lt;input [(ngModel)]=<span class="hljs-string">&quot;title&quot;</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>title:&#123;&#123;title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 
-<h4 id><a href="#" class="headerlink" title></a></h4><h3 id="2-3-Directives指令"><a href="#2-3-Directives指令" class="headerlink" title="2.3 Directives指令"></a>2.3 Directives指令</h3><h3 id="2-4-Dependency-Injection依赖注入"><a href="#2-4-Dependency-Injection依赖注入" class="headerlink" title="2.4 Dependency Injection依赖注入"></a>2.4 Dependency Injection依赖注入</h3><h2 id="3-开发指南"><a href="#3-开发指南" class="headerlink" title="3. 开发指南"></a>3. 开发指南</h2><h3 id="3-1-routing路由和navigation导航"><a href="#3-1-routing路由和navigation导航" class="headerlink" title="3.1 routing路由和navigation导航"></a>3.1 routing路由和navigation导航</h3><h3 id="3-2-forms表单"><a href="#3-2-forms表单" class="headerlink" title="3.2 forms表单"></a>3.2 forms表单</h3><h4 id="表单-API-汇总"><a href="#表单-API-汇总" class="headerlink" title="表单 API 汇总"></a>表单 API 汇总</h4><p>基础类</p>
+<h4 id="Angular管道：传输数据"><a href="#Angular管道：传输数据" class="headerlink" title="Angular管道：传输数据"></a>Angular管道：传输数据</h4><p><code>angular</code>中自带的<code>pipe</code>函数</p>
+<table>
+<thead>
+<tr>
+<th>管道</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DatePipe</td>
+<td>日期管道，格式化日期</td>
+</tr>
+<tr>
+<td>JsonPipe</td>
+<td>将输入数据对象经过JSON.stringify()方法转换后输出对象的字符串</td>
+</tr>
+<tr>
+<td>UpperCasePipe</td>
+<td>将文本所有小写字母转换成大写字母</td>
+</tr>
+<tr>
+<td>LowerCasePipe</td>
+<td>将文本所有大写字母转换成小写字母</td>
+</tr>
+<tr>
+<td>DecimalPipe</td>
+<td>将数值按照特定的格式显示文本</td>
+</tr>
+<tr>
+<td>CurrentcyPipe</td>
+<td>将数值进行货币格式化处理</td>
+</tr>
+<tr>
+<td>SlicePipe</td>
+<td>将数组或者字符串裁剪成新子集</td>
+</tr>
+<tr>
+<td>PercentPipe</td>
+<td>将数值转百分比格式</td>
+</tr>
+</tbody></table>
+<h4 id="模板引用变量"><a href="#模板引用变量" class="headerlink" title="模板引用变量  #"></a><strong>模板引用变量  #</strong></h4><p>响应输入</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br> <span class="hljs-title function_">getUserName</span>(<span class="hljs-params">value:<span class="hljs-built_in">string</span></span>)&#123;  <span class="hljs-comment">//传入value，类型为string</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value)<br>  &#125;<br>&#125;<br><br>&lt;input #userName <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;text&quot;</span> (input)=<span class="hljs-string">&quot;inputChange($event)&quot;</span>&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;getUserName(userName.value)&quot;</span>&gt;</span>获取userName<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h3 id="2-3-服务"><a href="#2-3-服务" class="headerlink" title="2.3 服务"></a>2.3 服务</h3><p>angular中，把从组件内抽离出来的代码叫服务，服务的本质就是函数</p>
+<h3 id="2-4-依赖注入"><a href="#2-4-依赖注入" class="headerlink" title="2.4 依赖注入"></a>2.4 依赖注入</h3><p>依赖注入（或 DI）让你可以保持组件类的精简和高效。有了 DI，组件就不用从服务器获取数据、验证用户输入或直接把日志写到控制台，而是会把这些任务委托给服务</p>
+<h2 id="3-开发指南"><a href="#3-开发指南" class="headerlink" title="3. 开发指南"></a>3. 开发指南</h2><h3 id="3-1-routing路由和navigation导航"><a href="#3-1-routing路由和navigation导航" class="headerlink" title="3.1 routing路由和navigation导航"></a>3.1 routing路由和navigation导航</h3><h3 id="3-2-forms表单"><a href="#3-2-forms表单" class="headerlink" title="3.2 forms表单"></a>3.2 forms表单</h3><h4 id="表单-API-汇总"><a href="#表单-API-汇总" class="headerlink" title="表单 API 汇总"></a>表单 API 汇总</h4><p>基础类</p>
 <ul>
 <li><code>FormControl</code> 实例用于追踪<strong>单个表单控件</strong>的值和验证状态。</li>
 <li><code>FormGroup</code> 用于追踪一个<strong>表单控件组</strong>的值和状态。</li>
@@ -447,12 +513,22 @@
 
 <p>效果</p>
 <p><img src="/posts/58911/2022-06-09-23-00-24.png" srcset="/img/loading.gif" lazyload></p>
-<h5 id="表单控件分组"><a href="#表单控件分组" class="headerlink" title="表单控件分组"></a><strong>表单控件分组</strong></h5><p>引入控件，创建一个 <strong>FormGroup</strong> 实例</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Component</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">FormControl</span>,<span class="hljs-title class_">FormGroup</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NameEditorComponent</span> &#123;<br>	loginForm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>(&#123;<br>    	<span class="hljs-attr">userName</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>    	<span class="hljs-attr">password</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>  	&#125;);<br>&#125;<br><br>&lt;form [formGroup]=<span class="hljs-string">&quot;loginForm&quot;</span>&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">    账号:</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;userName&quot;</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">    密码:</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;subFormFunc()&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h5 id="FormBuilder服务生成控件"><a href="#FormBuilder服务生成控件" class="headerlink" title="FormBuilder服务生成控件"></a>FormBuilder服务生成控件</h5><p>① 导入 FormBuilder 类</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">FormBuilder</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p>效果</p>
-<p><img src="/posts/58911/2022-06-09-23-00-58.png" srcset="/img/loading.gif" lazyload></p>
-<h5 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h5><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br>    fromData=&#123;<br>       <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;&#x27;</span>,<br>       <span class="hljs-attr">password</span>:<span class="hljs-string">&#x27;&#x27;</span><br>    &#125;;<br><br>    <span class="hljs-title function_">subBtnFUn</span>(<span class="hljs-params">obj</span>)&#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj)<br>    &#125;<br>&#125;<br><br>&lt;form  action=<span class="hljs-string">&quot;&quot;</span>&gt;<br>  账号：&lt;input required #nameInp=<span class="hljs-string">&quot;ngModel&quot;</span> type=<span class="hljs-string">&quot;text&quot;</span> [(ngModel)]=<span class="hljs-string">&quot;fromData.name&quot;</span> name=<span class="hljs-string">&quot;userName&quot;</span>&gt;<br>  &lt;br&gt;<br>  &lt;!-- 验证是否通过 --&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>验证结果：&#123;&#123;nameInp.valid &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!nameInp.valid&quot;</span>&gt;</span>请输入账号<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  密码：&lt;input required  #pasInp=<span class="hljs-string">&quot;ngModel&quot;</span> type=<span class="hljs-string">&quot;text&quot;</span> [(ngModel)]=<span class="hljs-string">&quot;fromData.password&quot;</span> name=<span class="hljs-string">&quot;password&quot;</span>&gt;<br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>验证结果：&#123;&#123;pasInp.valid &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;subBtnFUn(nameInp)&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>&lt;/form&gt;<br></code></pre></td></tr></table></figure>
+<p>② 注入这个 FormBuilder 服务</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) &#123; &#125;<br></code></pre></td></tr></table></figure>
+
+<p>③ 生成表单控件(<strong>表单构造器)</strong></p>
+<p>FormBuilder 服务有三个方法：control()、group() 和 array()。这些方法都是工厂方法，用于在组件类中分别生成 FormControl、FormGroup 和 FormArray</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Component</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">FormBuilder</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;<br><br><span class="hljs-meta">@Component</span>(&#123;<br>  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;app-profile-editor&#x27;</span>,<br>  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./profile-editor.component.html&#x27;</span>,<br>  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./profile-editor.component.css&#x27;</span>]<br>&#125;)<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProfileEditorComponent</span> &#123;<br>  profileForm = <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>(&#123;<br>    <span class="hljs-attr">firstName</span>: [<span class="hljs-string">&#x27;&#x27;</span>],<br>    <span class="hljs-attr">lastName</span>: [<span class="hljs-string">&#x27;&#x27;</span>],<br>    <span class="hljs-attr">address</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">fb</span>.<span class="hljs-title function_">group</span>(&#123;<br>      <span class="hljs-attr">street</span>: [<span class="hljs-string">&#x27;&#x27;</span>],<br>      <span class="hljs-attr">city</span>: [<span class="hljs-string">&#x27;&#x27;</span>],<br>      <span class="hljs-attr">state</span>: [<span class="hljs-string">&#x27;&#x27;</span>],<br>      <span class="hljs-attr">zip</span>: [<span class="hljs-string">&#x27;&#x27;</span>]<br>    &#125;),<br>  &#125;);<br><br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) &#123; &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>对比<strong>手动创建实例</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript">profileForm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>(&#123;<br>  <span class="hljs-attr">firstName</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>  <span class="hljs-attr">lastName</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>  <span class="hljs-attr">address</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>(&#123;<br>    <span class="hljs-attr">street</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>    <span class="hljs-attr">city</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>    <span class="hljs-attr">state</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),<br>    <span class="hljs-attr">zip</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br>  &#125;)<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h5><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppComponent</span> &#123;<br>    fromData=&#123;<br>       <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;&#x27;</span>,<br>       <span class="hljs-attr">password</span>:<span class="hljs-string">&#x27;&#x27;</span><br>    &#125;;<br><br>    <span class="hljs-title function_">subBtnFUn</span>(<span class="hljs-params">obj</span>)&#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj)<br>    &#125;<br>&#125;<br><br>&lt;form  action=<span class="hljs-string">&quot;&quot;</span>&gt;<br>  账号：&lt;input required #nameInp=<span class="hljs-string">&quot;ngModel&quot;</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;text&quot;</span> [(ngModel)]=<span class="hljs-string">&quot;fromData.name&quot;</span> name=<span class="hljs-string">&quot;userName&quot;</span>&gt;<br>  &lt;br&gt;<br>  &lt;!-- 验证是否通过 --&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>验证结果：&#123;&#123;nameInp.valid &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!nameInp.valid&quot;</span>&gt;</span>请输入账号<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  密码：&lt;input required  #pasInp=<span class="hljs-string">&quot;ngModel&quot;</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;text&quot;</span> [(ngModel)]=<span class="hljs-string">&quot;fromData.password&quot;</span> name=<span class="hljs-string">&quot;password&quot;</span>&gt;<br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>验证结果：&#123;&#123;pasInp.valid &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  &lt;br&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;subBtnFUn(nameInp)&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>&lt;/form&gt;<br></code></pre></td></tr></table></figure>
 
 <p>我们还可以通过 <strong>ngModel</strong> 跟踪修改状态与有效性验证，它使用了三个 CSS 类来更新控件，以便反映当前状态。</p>
 <table>
@@ -479,7 +555,7 @@
 <td align="left"><code>ng-invalid</code></td>
 </tr>
 </tbody></table>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jsx">.<span class="hljs-property">ng</span>-invalid&#123;<br>  border-<span class="hljs-attr">color</span>: red;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript">.<span class="hljs-property">ng</span>-invalid&#123;<br>  border-<span class="hljs-attr">color</span>: red;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>效果</p>
 <p><img src="/posts/58911/2022-06-09-23-01-51.png" srcset="/img/loading.gif" lazyload></p>
@@ -490,7 +566,7 @@
 </ul>
 <h4 id="模板驱动表单"><a href="#模板驱动表单" class="headerlink" title="模板驱动表单"></a>模板驱动表单</h4><p><strong>区别</strong>：响应式表单和模板驱动表单之间的一些关键差异</p>
 <p><img src="/posts/58911/2022-06-09-23-02-25.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-3-HTTP客户端"><a href="#3-3-HTTP客户端" class="headerlink" title="3.3 HTTP客户端"></a>3.3 HTTP客户端</h3><h3 id="3-4-Animations动画"><a href="#3-4-Animations动画" class="headerlink" title="3.4 Animations动画"></a>3.4 Animations动画</h3><h2 id="4-Tutorials"><a href="#4-Tutorials" class="headerlink" title="4. Tutorials"></a>4. Tutorials</h2><h2 id="-1"><a href="#-1" class="headerlink" title></a></h2>
+
               
             </div>
             <hr/>
@@ -578,6 +654,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/posts/53518.html" title="两数之和">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">两数之和</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
