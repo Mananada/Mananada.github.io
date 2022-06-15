@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>02-两数相加</title>
+    <link href="/posts/47005.html"/>
+    <url>/posts/47005.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h2><p>给你两个 非空的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个节点只能存储 一位数字。</p><p>请你将两个数相加，并以相同形式返回一个表示和的链表。</p><p>你可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p><h3 id="解法一：进位"><a href="#解法一：进位" class="headerlink" title="解法一：进位"></a>解法一：进位</h3><p><strong>思路</strong></p><ul><li>难点在于进位问题：设置carry判断是否进位<br>① %10 取余<br>② &#x2F;10 将整数部分赋值给carry（Math.flow())</li><li>两个链表相加一定会生成新的链表，但需要一个头部节点dummy，然后在dummy后面添加</li></ul><p><img src="/posts/47005/image-20220615144843038.png" alt="解题过程示意图"></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> addTwoNumbers = <span class="hljs-keyword">function</span>(<span class="hljs-params">l1, l2</span>) &#123;<br>  <span class="hljs-keyword">let</span> dummy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>();    <span class="hljs-comment">//新链表 表头</span><br>  <span class="hljs-keyword">let</span> curr = dummy;  <span class="hljs-comment">//链表指针，一开始指向表头</span><br>  <span class="hljs-keyword">let</span> carry = <span class="hljs-number">0</span>;  <span class="hljs-comment">//进位符</span><br>  <span class="hljs-comment">//如果l1,l2为空，返回空</span><br>  <span class="hljs-keyword">if</span>(l1 == <span class="hljs-literal">null</span> &amp;&amp; l2 == <span class="hljs-literal">null</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>  &#125;<br>  <span class="hljs-comment">//如果其中有一个链表不为空，统计sum</span><br>  <span class="hljs-keyword">while</span>(l1 != <span class="hljs-literal">null</span> || l2 != <span class="hljs-literal">null</span>)&#123;<br>    <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>(l1 !== <span class="hljs-literal">null</span>)&#123;<br>      sum += l1.<span class="hljs-property">val</span>;<br>      l1 = l1.<span class="hljs-property">next</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(l2 !== <span class="hljs-literal">null</span>)&#123;<br>      sum += l2.<span class="hljs-property">val</span>;<br>      l2 = l2.<span class="hljs-property">next</span>;<br>    &#125;<br>    sum += carry;<br>    curr.<span class="hljs-property">next</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(sum % <span class="hljs-number">10</span>);<br>    carry = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(sum / <span class="hljs-number">10</span>);<br>    curr = curr.<span class="hljs-property">next</span>;<br>  &#125;<br>  <span class="hljs-comment">//如果最后一位是进位，把carry赋给新链表</span><br>  <span class="hljs-keyword">if</span>(carry &gt; <span class="hljs-number">0</span>)&#123;<br>    curr.<span class="hljs-property">next</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(carry);<br>  &#125;<br>  <span class="hljs-keyword">return</span> dummy.<span class="hljs-property">next</span>;<br>&#125;;<br></code></pre></td></tr></table></figure><p><strong>小知识点：</strong></p><ul><li>Math.floor() 向下取整</li><li>Math.ceil() 向下取整</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>每日一题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+      <tag>LeetCode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>01-两数之和</title>
     <link href="/posts/53518.html"/>
     <url>/posts/53518.html</url>
